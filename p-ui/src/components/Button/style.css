@@ -1,0 +1,127 @@
+.pp-button {
+  --pp-button-font-weight: var(--pp-font-weight-primary);
+  --pp-button-border-color: var(--pp-border-color);
+  --pp-button-bg-color: var(--pp-fill-color-blank);
+  --pp-button-text-color: var(--pp-text-color-regular);
+  --pp-button-disabled-text-color: var(--pp-disabled-text-color);
+  --pp-button-disabled-bg-color: var(--pp-fill-color-blank);
+  --pp-button-disabled-border-color: var(--pp-border-color-light);
+  --pp-button-hover-text-color: var(--pp-color-primary);
+  --pp-button-hover-bg-color: var(--pp-color-primary-light-9);
+  --pp-button-hover-border-color: var(--pp-color-primary-light-7);
+  --pp-button-active-text-color: var(--pp-button-hover-text-color);
+  --pp-button-active-border-color: var(--pp-color-primary);
+  --pp-button-active-bg-color: var(--pp-button-hover-bg-color);
+  --pp-button-outline-color: var(--pp-color-primary-light-5);
+  --pp-button-active-color: var(--pp-text-color-primary);
+}
+
+.pp-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--pp-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: .1s;
+  font-weight: var(--pp-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--pp-button-bg-color);
+  border: var(--pp-border);
+  border-color: var(--pp-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--pp-font-size-base);
+  border-radius: var(--pp-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--pp-button-hover-text-color);
+    border-color: var(--pp-button-hover-border-color);
+    background-color: var(--pp-button-hover-bg-color);
+    outline: none;    
+  }
+  &:active {
+    color: var(--pp-button-active-text-color);
+    border-color: var(--pp-button-active-border-color);
+    background-color: var(--pp-button-active-bg-color);
+    outline: none;
+  }
+  &.is-plain {
+    --pp-button-hover-text-color: var(--pp-color-primary);
+    --pp-button-hover-bg-color: var(--pp-fill-color-blank);
+    --pp-button-hover-border-color: var(--pp-color-primary);    
+  }
+  /*round*/
+  &.is-round {
+    border-radius: var(--pp-border-radius-round);
+  }
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  /*disabled*/
+  &.is-disabled, &.is-disabled:hover, &.is-disabled:focus, 
+  &[disabled], &[disabled]:hover, &[disabled]:focus 
+  {
+    color: var(--pp-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--pp-button-disabled-bg-color);
+    border-color: var(--pp-button-disabled-border-color);
+  }
+}
+
+.pp-button--success {
+  --pp-button-bg-color: var(--pp-color-success);
+}
+@each $val in primary,success,warning,info,danger {
+  .pp-button--$(val) {
+    --pp-button-text-color: var(--pp-color-white);
+    --pp-button-bg-color: var(--pp-color-$(val));
+    --pp-button-border-color: var(--pp-color-$(val));
+    --pp-button-outline-color: var(--pp-color-$(val)-light-5);
+    --pp-button-active-color: var(--pp-color-$(val)-dark-2);
+    --pp-button-hover-text-color: var(--pp-color-white);
+    --pp-button-hover-bg-color: var(--pp-color-$(val)-light-3);
+    --pp-button-hover-border-color: var(--pp-color-$(val)-light-3);
+    --pp-button-active-bg-color: var(--pp-color-$(val)-dark-2);
+    --pp-button-active-border-color: var(--pp-color-$(val)-dark-2);
+    --pp-button-disabled-text-color: var(--pp-color-white);
+    --pp-button-disabled-bg-color: var(--pp-color-$(val)-light-5);
+    --pp-button-disabled-border-color: var(--pp-color-$(val)-light-5);
+  }
+  .pp-button--$(val).is-plain {
+    --pp-button-text-color: var(--pp-color-$(val));
+    --pp-button-bg-color: var(--pp-color-$(val)-light-9) ;
+    --pp-button-border-color: var(--pp-color-$(val)-light-5);
+    --pp-button-hover-text-color: var(--pp-color-white);
+    --pp-button-hover-bg-color: var(--pp-color-$(val));
+    --pp-button-hover-border-color: var(--pp-color-$(val));
+    --pp-button-active-text-color: var(--pp-color-white);
+  }
+}
+.pp-button--large {
+  --pp-button-size: 40px;
+  height: var(--pp-button-size);
+  padding: 12px 19px;
+  font-size: var(--pp-font-size-base);
+  border-radius: var(--pp-border-radius-base);
+}
+
+.pp-button--small {
+  --pp-button-size: 24px;
+  height: var(--pp-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--pp-border-radius-base) - 1px);
+}

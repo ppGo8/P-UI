@@ -1,0 +1,108 @@
+/*
+ * @描述：专门存储各种变量名称
+ */
+ :root {
+  /* colors */
+  --pp-color-white: #ffffff;
+  --pp-color-black: #000000;
+
+  --colors: (
+    primary: #409eff,
+    success: #67c23a,
+    warning: #e6a23c,
+    danger: #f56c6c,
+    info: #909399
+  );
+   @each $val, $color in var(--colors) {
+    --pp-color-$(val): $(color);
+    @for $i from 3 to 9 by 2 {
+      --pp-color-$(val)-light-$(i): mix(#fff, $(color), .$(i))
+    }
+    --pp-color-$(val)-light-8: mix(#fff, $(color), .8);
+    --pp-color-$(val)-dark-2: mix(#000, $(color), .2);
+  }
+  /* 以下颜色代码使用上述postcss-each和postcss-for动态生成 */
+  /* --pp-color-primary: #409eff;
+  --pp-color-primary-light-3: #79bbff;
+  --pp-color-primary-light-5: #a0cfff;
+  --pp-color-primary-light-7: #c6e2ff;
+  --pp-color-primary-light-8: #d9ecff;
+  --pp-color-primary-light-9: #ecf5ff;
+  --pp-color-primary-dark-2: #337ecc;
+  --pp-color-success: #67c23a;
+  --pp-color-success-light-3: #95d475;
+  --pp-color-success-light-5: #b3e19d;
+  --pp-color-success-light-7: #d1edc4;
+  --pp-color-success-light-8: #e1f3d8;
+  --pp-color-success-light-9: #f0f9eb;
+  --pp-color-success-dark-2: #529b2e;
+  --pp-color-warning: #e6a23c;
+  --pp-color-warning-light-3: #eebe77;
+  --pp-color-warning-light-5: #f3d19e;
+  --pp-color-warning-light-7: #f8e3c5;
+  --pp-color-warning-light-8: #faecd8;
+  --pp-color-warning-light-9: #fdf6ec;
+  --pp-color-warning-dark-2: #b88230;
+  --pp-color-danger: #f56c6c;
+  --pp-color-danger-light-3: #f89898;
+  --pp-color-danger-light-5: #fab6b6;
+  --pp-color-danger-light-7: #fcd3d3;
+  --pp-color-danger-light-8: #fde2e2;
+  --pp-color-danger-light-9: #fef0f0;
+  --pp-color-danger-dark-2: #c45656;
+  --pp-color-info: #909399;
+  --pp-color-info-light-3: #b1b3b8;
+  --pp-color-info-light-5: #c8c9cc;
+  --pp-color-info-light-7: #dedfe0;
+  --pp-color-info-light-8: #e9e9eb;
+  --pp-color-info-light-9: #f4f4f5;
+  --pp-color-info-dark-2: #73767a; */
+  
+  --pp-bg-color: #ffffff;
+  --pp-bg-color-page: #f2f3f5;
+  --pp-bg-color-overlay: #ffffff;
+  --pp-text-color-primary: #303133;
+  --pp-text-color-regular: #606266;
+  --pp-text-color-secondary: #909399;
+  --pp-text-color-placeholder: #a8abb2;
+  --pp-text-color-disabled: #c0c4cc;
+  --pp-border-color: #dcdfe6;
+  --pp-border-color-light: #e4e7ed;
+  --pp-border-color-lighter: #ebeef5;
+  --pp-border-color-extra-light: #f2f6fc;
+  --pp-border-color-dark: #d4d7de;
+  --pp-border-color-darker: #cdd0d6;
+  --pp-fill-color: #f0f2f5;
+  --pp-fill-color-light: #f5f7fa;
+  --pp-fill-color-lighter: #fafafa;
+  --pp-fill-color-extra-light: #fafcff;
+  --pp-fill-color-dark: #ebedf0;
+  --pp-fill-color-darker: #e6e8eb;
+  --pp-fill-color-blank: #ffffff;
+
+  /* border */
+  --pp-border-width: 1px;
+  --pp-border-style: solid;
+  --pp-border-color-hover: var(--pp-text-color-disabled);
+  --pp-border: var(--pp-border-width) var(--pp-border-style) var(--pp-border-color);
+  --pp-border-radius-base: 4px;
+  --pp-border-radius-small: 2px;
+  --pp-border-radius-round: 20px;
+  --pp-border-radius-circle: 100%;
+
+  /*font*/
+  --pp-font-size-extra-large: 20px;
+  --pp-font-size-large: 18px;
+  --pp-font-size-medium: 16px;
+  --pp-font-size-base: 14px;
+  --pp-font-size-small: 13px;
+  --pp-font-size-extra-small: 12px;
+  --pp-font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", Arial, sans-serif;
+  --pp-font-weight-primary: 500;
+
+  /*disabled*/
+  --pp-disabled-bg-color: var(--pp-fill-color-light);
+  --pp-disabled-text-color: var(--pp-text-color-placeholder);
+  --pp-disabled-border-color: var(--pp-border-color-light);
+ 
+}

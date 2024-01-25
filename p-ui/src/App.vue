@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Button from './components/Button/Button.vue'
+import Icon from './components/Icon/Icon.vue'
 </script>
 
 <template>
-  <main>
+  <main v-if="true">
     <h1>Button按钮</h1>
     <Button ref="buttonRef" type="success">Test Button</Button>
     <Button round>Round Button</Button>
@@ -23,8 +24,15 @@ import Button from './components/Button/Button.vue'
     <Button type="danger" plain>Danger</Button><br/><br/>
     <Button size="large">Large</Button>
     <Button size="small">Small</Button><br/><br/>
-    <Button size="large" loading>Loading</Button>
-    <Button size="large" icon="arrow-up">Icon</Button><br/><br/>    
+    <Button size="large" loading type="success">slot</Button><br/><br/>    
+    <Button size="large" loading icon="arrow-up" >Icon</Button><br/><br/>    
+  </main>
+
+  <main>
+    <h1>Icon图标</h1>
+    <Icon icon="arrow-up"/>
+    <Icon icon="arrow-up" color="red"/>
+    <Icon icon="arrow-up" type="danger"/>
   </main>
 </template>
 

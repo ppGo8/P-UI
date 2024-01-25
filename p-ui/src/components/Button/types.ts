@@ -6,15 +6,17 @@ type ButtonSize =  'small' | 'normal' | 'large';
 export type NativeType = 'button' | 'submit' | 'reset'; // html button原生的type属性的值
 // 1.编译时声明类型
 export interface ButtonProps {
-  type?: ButtonType;
-  size?: ButtonSize;
-  plain?: boolean;
-  round?: boolean;
-  circle?: boolean;
+  type?: ButtonType
+  size?: ButtonSize
+  plain?: boolean
+  round?: boolean
+  circle?: boolean
   // button按钮的原生属性
-  disabled?: boolean;
-  nativeType?: NativeType,
-  autofocus?: boolean;
+  disabled?: boolean
+  nativeType?: NativeType
+  autofocus?: boolean
+  icon?:string
+  loading?: boolean
 }
 export interface ButtonInstance {
   ref: HTMLButtonElement

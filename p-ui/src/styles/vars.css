@@ -104,5 +104,9 @@
   --pp-disabled-bg-color: var(--pp-fill-color-light);
   --pp-disabled-text-color: var(--pp-text-color-placeholder);
   --pp-disabled-border-color: var(--pp-border-color-light);
- 
+
+   /*animation*/
+   --pp-transition-duration: .3s;
+   --pp-transition-duration-fast: .2s;
+   
 }

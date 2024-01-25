@@ -1,0 +1,66 @@
+.pp-collapse {
+  --pp-collapse-border-color: var(--pp-border-color-light);
+  --pp-collapse-header-height: 48px;
+  --pp-collapse-header-bg-color: var(--pp-fill-color-blank);
+  --pp-collapse-header-text-color: var(--pp-text-color-primary);
+  --pp-collapse-header-font-size: 13px;
+  --pp-collapse-content-bg-color: var(--pp-fill-color-blank);
+  --pp-collapse-content-font-size: 13px;
+  --pp-collapse-content-text-color: var(--pp-text-color-primary);
+  --pp-collapse-disabled-text-color: var(--pp-disabled-text-color);
+  --pp-collapse-disabled-border-color: var(--pp-border-color-lighter);
+  border-top: 1px solid var(--pp-collapse-border-color);
+  border-bottom: 1px solid var(--pp-collapse-border-color);
+}
+.pp-collapse-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--pp-collapse-header-height);
+  line-height: var(--pp-collapse-header-height);
+  background-color: var(--pp-collapse-header-bg-color);
+  color: var(--pp-collapse-header-text-color);
+  cursor: pointer;
+  font-size: var(--pp-collapse-header-font-size);
+  font-weight: 500;
+  transition: border-bottom-color var(--pp-transition-duration);
+  outline: none;
+  border-bottom: 1px solid var(--pp-collapse-border-color);
+  &.is-disabled {
+    color: var(--pp-collapse-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+  }
+  &.is-active {
+    border-bottom-color: transparent;
+    .header-angle {
+      transform: rotate(90deg);
+    }
+  }
+  .header-angle {
+    transition: transform var(--pp-transition-duration);
+  }
+}
+.pp-collapse-item__content {
+  will-change: height;
+  background-color: var(--pp-collapse-content-bg-color);
+  overflow: hidden;
+  /* 注意: 此时设置的height和width为整个盒子的 下面有个padding-bottom: 25px,因此如果显示设置的高度小于25px,会被重置为25px*/
+  box-sizing: border-box; 
+  font-size: var(--pp-collapse-content-font-size);
+  color: var(--pp-collapse-content-text-color);
+  border-bottom: 1px solid var(--pp-collapse-border-color);
+  padding-bottom: 25px;
+}
+/* transition有用的前提: 需要指明属性两个状态的具体值, auto不行、默认值不行;
+   transion识别的是：自己监听的这一属性是否有显式设置确定的值
+   常见方法：
+     1. 可以使用css或js指定开始态或结束态的状态
+     2. 举例：高度就使用js方法,因为他的高度一般是自适应的
+         因此可以设置开始态是0,结束态(中间态也可以)是dom.clientHeight   
+*/
+.slide-enter-active, .slide-leave-active {
+  transition: height var(--pp-transition-duration);
+}
+
+

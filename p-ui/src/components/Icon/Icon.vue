@@ -1,4 +1,8 @@
 <template>
+   <!-- 在defineOptions处禁用了数据透传
+        如果此处不显式设置v-bind="$attrs"
+        在使用该组件的模板中，在该组件上写的class属性将不会挂载最外层的根节点,即实际的dom上;
+        因此也没办法通过该类名设置样式 -->
   <i 
     class="pp-icon"
     :class="{[`pp-icon--${type}`] : type }"

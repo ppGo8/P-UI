@@ -6,8 +6,7 @@
     "src/**/*.vue",
     "src/**/*.ts",
     "src/**/*.js",
-    "src/**/**/*.ts",
-  ],
+    ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -15,5 +14,5 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
 }

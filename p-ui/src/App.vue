@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Button from './components/Button/Button.vue'
 import Icon from './components/Icon/Icon.vue'
+import Collapse from './components/Collapse/Collapse.vue'
+import CollapseItem from './components/Collapse/CollapseItem.vue'
+const activeItem = ref(['a'])
 </script>
 
 <template>
-  <main v-if="true">
+  <main v-if="false">
     <h1>Button按钮</h1>
     <Button ref="buttonRef" type="success">Test Button</Button>
     <Button round>Round Button</Button>
@@ -28,11 +32,27 @@ import Icon from './components/Icon/Icon.vue'
     <Button size="large" loading icon="arrow-up" >Icon</Button><br/><br/>    
   </main>
 
-  <main>
+  <main v-if="false">
     <h1>Icon图标</h1>
     <Icon icon="arrow-up"/>
     <Icon icon="arrow-up" color="red"/>
     <Icon icon="arrow-up" type="danger"/>
+  </main>
+
+  <main v-if="true">
+    <Collapse v-model="activeItem" accordion>
+      <CollapseItem name="a" title="a">
+        我是a
+      </CollapseItem>
+      <CollapseItem name="b" title="b">
+        我是b
+      </CollapseItem>
+      <CollapseItem name="c" title="c">
+        我是c
+      </CollapseItem>
+    </Collapse>
+    {{ activeItem }}
+    <br />
   </main>
 </template>
 

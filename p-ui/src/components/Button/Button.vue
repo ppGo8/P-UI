@@ -1,26 +1,24 @@
 <template>
-  <div>
-    <button
-      ref="_ref"
-      class="pp-button"
-      :class="{
-        [`pp-button--${type}`]: type,
-        [`pp-button--${size}`]: size,
-        'is-plain': props.plain,
-        'is-round': round,
-        'is-circle': circle,
-        'is-disabled': disabled,
-        'is-loading': loading
-      }"
-      :disabled="disabled || loading"
-      :autofocus="autofocus"
-      :type="nativeType"
-    >
-      <Icon icon="spinner" spin v-if="loading"/>
-      <Icon :icon="icon" v-if="icon"/>
-      <slot></slot>
-    </button>
-  </div>
+  <button
+    ref="_ref"
+    class="pp-button"
+    :class="{
+      [`pp-button--${type}`]: type,
+      [`pp-button--${size}`]: size,
+      'is-plain': props.plain,
+      'is-round': round,
+      'is-circle': circle,
+      'is-disabled': disabled,
+      'is-loading': loading
+    }"
+    :disabled="disabled || loading"
+    :autofocus="autofocus"
+    :type="nativeType"
+  >
+    <Icon icon="spinner" spin v-if="loading"/>
+    <Icon :icon="icon" v-if="icon"/>
+    <slot></slot>
+  </button>
 </template>
 
 <script setup lang="ts">

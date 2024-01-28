@@ -1,10 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref} from 'vue'
 import Button from './components/Button/Button.vue'
 import Icon from './components/Icon/Icon.vue'
 import Collapse from './components/Collapse/Collapse.vue'
 import CollapseItem from './components/Collapse/CollapseItem.vue'
+import Tooltip from './components/Tooltip/Tooltip.vue'
+
 const activeItem = ref(['a'])
+
+let events = ref<'hover' | 'click'>('click')
+import type { TooltipInstance } from './components/Tooltip/types'
+const tooltipRef = ref<TooltipInstance | null>(null)
+const open = () => {
+  tooltipRef.value?.openPopper()
+}
+const close = () => {
+  tooltipRef.value?.closePopper()
+}
+
 </script>
 
 <template>
@@ -39,7 +52,7 @@ const activeItem = ref(['a'])
     <Icon icon="arrow-up" type="danger"/>
   </main>
 
-  <main v-if="true">
+  <main v-if="false">
     <Collapse v-model="activeItem" accordion>
       <CollapseItem name="a" title="a">
         我是a
@@ -54,7 +67,24 @@ const activeItem = ref(['a'])
     {{ activeItem }}
     <br />
   </main>
-  <div class="test">测试</div>
+  
+  <main v-if="true">
+    <!-- <Tooltip content="poper" placement="bottom-start" manual ref="tooltipRef" trigger="hover">
+      <img src="./assets/test.jpg" alt="图片未加载" style="width: 200px;">
+    </Tooltip>
+    <button @click="open">显示popper</button>
+    <button @click="close">关闭popper</button>
+    <br />
+
+    <Tooltip content="poper" placement="bottom-start" trigger="hover" :open-delay="1000" :close-delay="1000">
+      <img src="./assets/test.jpg" alt="图片未加载" style="width: 200px;">
+    </Tooltip> -->
+    
+    <br />
+    <Tooltip content="我是popper的内容" trigger="click" placement="right">
+      <img src="./assets/test.jpg" alt="图片未加载" style="width: 200px;">
+    </Tooltip>
+  </main>
 </template>
 
 <style scoped>

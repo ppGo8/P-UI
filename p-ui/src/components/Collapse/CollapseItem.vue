@@ -64,6 +64,7 @@ const collapseContext = inject(collapseContextKey) // 无需显示声明Inject�
 
 // content是否显示
 const isActive = computed(()=> collapseContext?.activeNames.value.includes(props.name)) 
+
 // 点击header触发
 const handleClick = () => {
   if (props.disabled) return

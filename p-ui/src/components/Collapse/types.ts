@@ -26,6 +26,7 @@ export interface CollapseItemPopps {
 //   2. 告诉inject处接收到的数据类型 从而在Inject接受处可以自动推导处类型,而不必在赋值号左侧写类型
 export interface CollapseContext {
   activeNames: Ref<NameType[]>,
+  // _activeNames: NameType[],
   // 函数表达式的类型，而不是使用接口的方式
   handleItemClick: (item: NameType)=> void
 }

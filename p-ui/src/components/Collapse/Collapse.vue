@@ -39,20 +39,36 @@ if (props.accordion && activeNames.value.length > 1) {
   console.warn('手风琴模式只能有一个被激活项！')
 }
 const handleItemClick = (item: NameType) => {
+  let _activeNames = [...activeNames.value ]
   if (props.accordion) {
-    activeNames.value = [ activeNames.value[0] === item ? '' : item ]
+    _activeNames= [ _activeNames[0] === item ? '' : item ]
   } else {
-    const index = activeNames.value.indexOf(item)
+    const index = _activeNames.indexOf(item)
     if ( index > -1) {
       // content由显示 ==> 不显示
-      activeNames.value.splice(index, 1);
+      _activeNames.splice(index, 1);
     } else {
       // content由不显示 ==> 显示
-      activeNames.value.push(item)
+      _activeNames.push(item)
     }
   }
-  emits('update:modelValue', activeNames.value)
-  // emits('change', activeNames.value)
+  /**
+   * activeNames.value是通过provide传递给子组件
+   * 子组件使用inject接受数据,每个子组件实例是共享同一份对象的(类似vuex)
+   * provide/inject的响应式：
+   *   死数据非响应式,父组件数据变化子组件不变
+   *   ref和reactive的响应式数组,父组件数据变化子组件变化,子组件数据变化需要事件触发更改(单项数据流)
+   *   
+   *  emits('change', activeNames.value)在测试中发现了一个问题
+   *  现象：如果每触发一次,查看一次结果发现传递的参数是正常的；
+   *  现象：多次触发emits事件后,最后一起查看结果,发现传递的参数为一个值,为最后一次触发的值；
+   *  原因：inject接受到的数据在各个子组件中是共享的,共同指向该对象所在的空间,因此测试在最后一起查看参数时,会变成最后一次触发的值
+   *  解决方案：
+   *    函数开始时：声明局部变量(存在于每个组件实例自己的内存空间中)接受inject的数据activeNames.value
+   *    函数结束时：将操作后的局部变量的重新赋值给activeNames.value(请在函数末尾修改)),将局部变量作为参数传递给emits
+   */ 
+  activeNames.value = [ ..._activeNames ]
+  emits('update:modelValue', _activeNames)
 }
 
 provide(collapseContextKey, {

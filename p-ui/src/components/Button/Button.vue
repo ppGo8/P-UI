@@ -32,7 +32,9 @@ defineOptions({
 // vue3.2不支持 解决方法:1.可以使用外部导入的基于运行时的类型 2.使用Vue-Macro
 import type { ButtonProps} from './types'
 import type { icon } from '@fortawesome/fontawesome-svg-core';
-const props = defineProps<ButtonProps>()
+const props = withDefaults(defineProps<ButtonProps>(), {
+  type: 'primary'
+})
 
 // 暴露button dom给外部使用
 const _ref = ref<HTMLButtonElement | null>(null)

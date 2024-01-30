@@ -3,7 +3,7 @@
     class="pp-tooltip"
     ref="popperContainerNode"
     v-on="eventsParent"
-
+    style="border: 8px solid pink;"
   >
     <div
       ref="triggerNode"
@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 const emits = defineEmits<TooltipEmits>()
 
 // 显示或隐藏Tooltip
-let poperInstace: Instance // 显示poper的节点
+let poperInstance: Instance // 显示poper的节点
 const isOpen = ref(false); // 根据该变量的值进行操作
 const popperNode = ref<HTMLElement>()
 const triggerNode = ref<HTMLElement>()
@@ -77,14 +77,14 @@ const togglePopper = () => {
   emits('visible-change', isOpen.value);
 }
 const openPopper = () => {
-  openTimes++
-  console.info('openTimes', openTimes);
+  openTimes = openTimes + 1
+  // console.info('openTimes', openTimes);
   isOpen.value = true;
   emits('visible-change', isOpen.value);
 }
 const closePopper = () => {
-  closeTimes++
-  console.info('closeTimes', closeTimes)
+  closeTimes= closeTimes + 1
+  // console.info('closeTimes', closeTimes)
   isOpen.value = false;
   emits('visible-change', isOpen.value);
 }
@@ -149,18 +149,17 @@ watch(isOpen, (newValue) => {
   if(newValue) {
     if(triggerNode.value && popperNode.value) {
       // 使用js方法明显操作界面
-      console.info('popperOptions.value', popperOptions.value)
-      poperInstace = createPopper(triggerNode.value, popperNode.value, popperOptions.value)
+      poperInstance = createPopper(triggerNode.value, popperNode.value, popperOptions.value)
     }
   } else {
-    // 销毁,取消显示
-    // poperInstace?.destroy() // 并没有在dom更新后执行
-    console.info('销毁')
+    // 销毁,取消显示 此处业务逻辑需要修改
+    // poperInstance?.destroy() // 并没有在dom更新后执行
+    // console.info('销毁')
   }
 }, { flush: 'post' })
 
 onUnmounted(() => {
-  poperInstace?.destroy();
+  poperInstance?.destroy();
 })
 
 defineExpose<TooltipInstance>({

@@ -1,3 +1,4 @@
+<!-- dropdown组件 -->
 <template>
   <Dropdown ref="dropdownRef" :menu-options="options" manual>
     <Button>仅支持手动写方法触发下拉菜单</Button>
@@ -10,8 +11,8 @@
 import { ref, h } from 'vue'
 
 import Button from './components/Button/Button.vue'
-import Dropdown from './components/Dropdown/Dropdown.vue'
-// import Dropdown from './components/Dropdown/Dropdown'
+import Dropdown from './components/Dropdown/Dropdown.vue' // sfc定义的组件
+// import Dropdown from './components/Dropdown/Dropdown' // jsx定义的组件
 
 import type { DropdownInstance } from './components/Dropdown/types'
 import type { MenuOption } from './components/Dropdown/types'
@@ -33,4 +34,3 @@ const closeD = () => {
 }
 
 </script>
-

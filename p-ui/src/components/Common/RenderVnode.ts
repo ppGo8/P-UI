@@ -13,7 +13,7 @@ const RenderVnode = defineComponent({
     }
   },
   setup(props) {
-    return () => props.vNode  // setup返回一个函数,函数的返回值会被渲染在界面中
+    return () => props.vNode  // setup返回的函数为渲染函数,render 该函数可以将虚拟节点渲染为真实DOM,显示在界面上
   }
 })
 

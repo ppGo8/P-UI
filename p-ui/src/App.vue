@@ -1,36 +1,31 @@
-<template>
-  <Dropdown ref="dropdownRef" :menu-options="options" manual>
-    <Button>仅支持手动写方法触发下拉菜单</Button>
-  </Dropdown>
-  <Button @click="openD">显示下拉菜单</Button>
-  <Button @click="closeD">关闭下拉菜单</Button>
-</template>
+<!-- <template>
+  <Message show-close><h1>slot传递</h1></Message>
+  <Message show-close :message="'string参数,没有定时关闭'" :duration="0" />
+  <Message show-close :message="h('h1','vnode传入')" />
+</template> -->
 
 <script setup lang="ts">
-import { ref, h } from 'vue'
+import { h, onMounted } from 'vue'
+import Message from './components/Message/Message.vue'
 
-import Button from './components/Button/Button.vue'
-import Dropdown from './components/Dropdown/Dropdown.vue'
-// import Dropdown from './components/Dropdown/Dropdown'
+// 只写函数就创建了一个组件,而该函数并不是通过defineComponent创建一个组件
+import { createMessage } from './components/Message/Message'
 
-import type { DropdownInstance } from './components/Dropdown/types'
-import type { MenuOption } from './components/Dropdown/types'
-
-const options: MenuOption[] = [
-  {key: 1, label: 'item1'},
-  {key: 2, label: h('h2', 'this is h2')},
-  {key: 3, label: 'item3', disabled: true},
-  {key: 4, label: 'item4', divided: true}
-]
-let dropdownRef = ref<DropdownInstance | null>(null)
-
-console.info(dropdownRef.value,)
-const openD = () => {
-  dropdownRef.value?.open()
-}
-const closeD = () => {
-  dropdownRef.value?.close()
-}
-
+onMounted(()=> {
+  createMessage({
+    message:'函数式组件message',
+    duration: 0,
+    showClose: true
+  })
+  createMessage({
+    message:'函数式组件message',
+    duration: 0,
+    showClose: true
+  })
+  createMessage({
+    message:'函数式组件message',
+    duration: 0,
+    showClose: true
+  })
+})
 </script>
-

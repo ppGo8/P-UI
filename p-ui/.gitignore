@@ -27,6 +27,8 @@ coverage
 *.sln
 *.sw?
 
+# Mac DS_Store Files
+.DS_Store
 
 #Vitepress
 docs/.vitepress/cache

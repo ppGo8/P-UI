@@ -6,7 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // 引入全部图标
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
-import App from './App1.vue'
+// import App from './App1.vue'
+import App from './AppInput.vue'
 
 // 添加图标 引入后需要在这里添加
 library.add(fas)

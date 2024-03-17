@@ -15,7 +15,7 @@ defineOptions({
 })
 
 const props = defineProps<CollapsePopps>();
-/* 1.原理：自定义组件上绑定了v-model,会被解析为
+/* 1.原理：自定义组件上绑定了v-model=searchText,会被解析为
      :modelValue='searchText'
      @update:modelValue = '(newValue )=>{ searchText = newValue }'
    2.在自定义组件上实现双向绑定过程

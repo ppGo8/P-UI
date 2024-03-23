@@ -1,0 +1,99 @@
+.pp-switch {
+  --pp-switch-on-color: var(--pp-color-primary);
+  --pp-switch-off-color: var(--pp-border-color);
+  --pp-switch-on-border-color: var(--pp-color-primary);
+  --pp-switch-off-border-color: var(--pp-border-color);
+}
+
+.pp-switch {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  border: 3px solid red;
+}
+
+/* checkbox框 隐藏显示 但dom存在可以触发事件*/
+.pp-switch__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+  opacity: 0; 
+}
+
+/* switch核心框：椭圆形 下面未选中的情况*/
+.pp-swicth__core {
+  display: inline-block;
+  align-items: center;
+  position: relative;
+  height: 20px;
+  min-width: 40px;
+  box-sizing: border-box; 
+  border: 1px solid var(--pp-switch-off-border-color);
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--pp-switch-off-color);
+  cursor: pointer;
+  /* 希望颜色有渐变的效果 因此设置动画 */
+  transition: border-color var(--pp-transition-duration), background-color var(--pp-transition-duration);
+
+  /* 内部小圆球 */
+  .pp-switch__core-action {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    height: 16px;
+    width: 16px;
+    border-radius: var(--pp-border-radius-circle);
+    background-color: var(--pp-color-white);
+    transition: all var(--pp-transition-duration);
+  } 
+
+  /* 内部文字提示 */
+  .pp-switch__core-inner{
+    width: 100%;
+    transition: all var(--pp-transition-duration);
+    height: 16px;
+    display: flex;
+    overflow: hidden;
+    padding: 0 4px 0 18px;
+  }
+  .pp-switch__core-inner-text{
+      line-height: 18px;
+      font-size: 12px;
+      color: var(--pp-color-white);
+      user-select: none;
+      /* overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; */
+  }
+}
+
+/* 被选中的情况  
+   特殊状态（会新增css选择器，vue动态控制），被选中就会展示这个状态
+   选择器权重，覆盖前面
+*/
+.pp-switch.is-checked .pp-swicth__core {
+  /* 底层椭圆框修改颜色 */
+  border-color: var(--pp-switch-on-border-color);
+  background-color: var(--pp-switch-on-color);
+  /* 内部小圆球 位置 */
+  .pp-switch__core-action {
+    left: calc( 100% - 17px );
+  }
+  /* 内部文字位置 */
+  .pp-switch__core-inner {
+    padding: 0 18px 0 4px;
+  }
+}
+
+/* tab选中input checkbox时展示轮廓，提醒用户获取了焦点 */
+.pp-switch__input:focus-visible ~ .pp-swicth__core{
+  /* outline不占用位置 主要用于在元素获得焦点时展示边框 */
+  outline: 2px solid var(--pp-switch-on-color);
+  outline-offset: 1px;
+}
+
+

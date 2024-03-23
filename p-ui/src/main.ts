@@ -7,7 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
 // import App from './App1.vue'
-import App from './AppInput.vue'
+import App from './AppSwitch.vue'
 
 // 添加图标 引入后需要在这里添加
 library.add(fas)

@@ -33,6 +33,8 @@ export interface SelectProps {
   // 远程搜索相关
   remote?: boolean;
   remoteMethod?: CunstomRemoteFunc; 
+  // 支持多选
+  multiple?: boolean; // 暂未实现
 }
 
 export interface SelectEmits {

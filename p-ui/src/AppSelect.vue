@@ -1,16 +1,16 @@
 <template>
   <!-- 带清空功能 -->
-  <Select 
+  <!-- <Select 
     v-model="test"
     placeholder="请输入内容"
     :options="option2"  
     clearable
   >
   </Select>
-  <br />
+  <br /> -->
 
   <!-- 自定义模板 -->
-  <Select 
+  <!-- <Select 
     v-model="test"
     placeholder="请输入内容"
     :options="option2"
@@ -18,17 +18,36 @@
     clearable
   >
   </Select>
-  <br />
+  <br /> -->
   
   <!-- 支持输入筛选 -->
-  <Select 
+  <!-- <Select 
     v-model="test"
     placeholder="请输入内容"
     :options="option2"
     clearable
     filterable
   >
+  </Select> -->
+  <!-- <br /> -->
+
+  <!-- 多选框 -->
+  <Select 
+    v-model="test"
+    placeholder="多选框"
+    :options="option2"
+    multiple  
+    clearable
+  >
   </Select>
+  <Select 
+    v-model="test"
+    placeholder="单选框"
+    :options="option2"  
+    clearable
+  >
+  </Select>
+  <br />
 </template>
 
 <script setup>

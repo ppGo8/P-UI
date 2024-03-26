@@ -130,7 +130,8 @@ const useClickOutsideFn = () => {
     }
   })
 }
-useClickOutsideFn()
+// 挂载时 即执行对应函数
+useClickOutsideFn();
 watch(()=> props.manual, (newValue) => {
   if(newValue) {
     // 清空事件列表

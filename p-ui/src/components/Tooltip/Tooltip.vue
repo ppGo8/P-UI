@@ -1,9 +1,9 @@
 <template>
+  <!-- style="border: 10px solid pink;" -->
   <div
     class="pp-tooltip"
     ref="popperContainerNode"
     v-on="eventsParent"
-    style="border: 8px solid pink;"
   >
     <div
       ref="triggerNode"
@@ -123,6 +123,10 @@ const useClickOutsideFn = () => {
   useClickOutside(popperContainerNode, () => {
     if( props.trigger === 'click' && isOpen.value && !props.manual) {
       closePopper();
+    }
+    // 触发事件 允许外部进行一定的业务逻辑处理
+    if (isOpen.value) {
+      emits('click-outside', true);
     }
   })
 }

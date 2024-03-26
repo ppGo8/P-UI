@@ -73,6 +73,47 @@
       border-bottom: 1px solid var(--pp-popover-border-color);
     }
 
+    /* 增加引起悬浮内容和popper之间的可悬浮区域，保证可以从引起悬浮的区域移动到悬浮区*/
+    /* 调整z-index是因为：如果不设置伪类元素会置于弹出层元素顶层，导致无法选中下层文字 */
+    &[data-popper-placement^="top"]::after {
+      position: absolute;
+      content: '';
+      top: 0px;
+      bottom: -10px;
+      left: 0px;
+      right: 0px;
+      z-index: -999;
+    }
+    &[data-popper-placement^="bottom"]::after {
+      position: absolute;
+      content: '';
+      top: -10px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: -999;
+    }
+    &[data-popper-placement^="left"]::after {
+      position: absolute;
+      content: '';
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: -10px;
+      z-index: -999;
+    }
+    &[data-popper-placement^="right"]::after {
+      position: absolute;
+      content: '';
+      top: 0px;
+      bottom: 0px;
+      left: -10px;
+      right: 0px;
+      z-index: -999;
+    }
+
+
+
   }
 
   .popperFade-enter-active,

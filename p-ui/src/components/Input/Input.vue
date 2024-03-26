@@ -162,7 +162,6 @@ const handlerFocus = (event: FocusEvent) => {
   emits('focus', event);
 }
 const handlerBlur = (event: FocusEvent) => {
-  console.log('@失去焦点');
   isFocus.value = false;
   emits('focus', event);
 }

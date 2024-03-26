@@ -87,3 +87,9 @@ hr {
   border: 0;
   border-top: 1px solid var(--pp-border-color-lighter);
 }
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

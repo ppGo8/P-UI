@@ -20,6 +20,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Input from './components/Input/Input.vue';
-const test = ref('')
+const test = ref('穿进去的值')
 
 </script>

@@ -1,4 +1,4 @@
-pp-input {
+.pp-input {
   --pp-input-text-color: var(--pp-text-color-regular);
   --pp-input-border: var(--pp-border);
   --pp-input-hover-border: var(--pp-border-color-hover);
@@ -150,7 +150,7 @@ pp-input {
   width: 100%;
   font-size: inherit;
   font-family: inherit;
-  color: var(--pp-input-text-color, var(--pp-text-color-regular));
+  c÷olor: var(--pp-input-text-color, var(--pp-text-color-regular));
   background-color: var(--pp-input-bg-color, var(--pp-fill-color-blank));
   background-image: none;
   -webkit-appearance: none;
@@ -178,10 +178,11 @@ pp-input {
   transition: var(--pp-transition-box-shadow);
   box-shadow: 0 0 0 1px var(--pp-input-border-color, var(--pp-border-color)) inset;
   &:hover {
+    /* background-color: pink; */
     box-shadow: 0 0 0 1px var(--pp-input-hover-border-color) inset;
   }
   &.is-focus {
-    box-shadow: 0 0 0 1px var(--pp-input-focus-border-color) inset;
+    box-shadow: 0 0  0 1px var(--pp-input-focus-border-color) inset;
   }
   .pp-input__inner {
     --pp-input-inner-height: calc(var(--pp-input-height, 32px) - 2px);

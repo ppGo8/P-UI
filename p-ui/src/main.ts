@@ -10,7 +10,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 // import App from './AppDropdown.vue';
 // import App from './AppInput.vue';
 // import App from './AppTooltip.vue';
-import App from './AppSelect.vue';
+// import App from './AppSelect.vue';
+import App from './AppForm.vue';
 
 // 添加图标 引入后需要在这里添加
 library.add(fas)

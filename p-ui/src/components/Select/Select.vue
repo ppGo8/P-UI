@@ -90,7 +90,7 @@ import Tooltip from '../Tooltip/Tooltip.vue';
 import Input from '../Input/Input.vue';
 import Icon from '../Icon/Icon.vue';
 import RenderVnode from '../Common/RenderVnode';
-import { isFunction, debounce, multiply } from 'lodash-es';
+import { isFunction, debounce } from 'lodash-es';
 import { ref, reactive, computed, watch } from 'vue';
 import type { SelectProps, SelectEmits, SelectOption, SelectStates} from './types';
 import type { TooltipInstance } from '../Tooltip/types';

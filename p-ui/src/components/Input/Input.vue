@@ -113,7 +113,9 @@
 
 <script setup lang="ts">
 import type { InputProps, InputEmits } from './types';
-import { ref, watch, computed, useAttrs, nextTick } from 'vue';
+import type { FormValidateFailure } from '../Form/types';
+import { formItemContextKey } from '../Form/types';
+import { ref, watch, computed, useAttrs, nextTick, inject} from 'vue';
 import type { Ref } from 'vue';
 import Icon from '../Icon/Icon.vue';
 
@@ -121,6 +123,7 @@ defineOptions({
   name:'PpInput',
   inheritAttrs: false
 })
+
 
 const inputRef = ref() as Ref<HTMLInputElement>;
 
@@ -147,8 +150,9 @@ const isShowPasswordEyeIcon = computed(() => {
 const handlerInput = () => {
   emits('update:modelValue', innerValue.value);
   emits('input', innerValue.value);
-
+  runValidation('input');
 }
+
 // 父组件处直接修改传递给 子组件的props数据值 子组件响应
 watch(() => props.modelValue, (newValue) => {
   innerValue.value = newValue;
@@ -156,20 +160,22 @@ watch(() => props.modelValue, (newValue) => {
 
 const handleChange = () => {
   emits('change', innerValue.value);
+  runValidation('change');
 }
 const handlerFocus = (event: FocusEvent) => {
   isFocus.value = true;
   emits('focus', event);
+  runValidation('focus');
 }
 const handlerBlur = (event: FocusEvent) => {
   isFocus.value = false;
-  emits('focus', event);
+  emits('blur', event);
+  runValidation('blur');
 }
 const handlerClearIconClick = () => {
   // 注意：
   // 在用户界面/组件内部修改自定义组件“上” 双向绑定的值
   // 都需要重新发射给父组件 让父组件的值也发生变化
-  console.log('@清空');
   innerValue.value = '';
   emits('update:modelValue', '');
   emits('clear');
@@ -191,6 +197,15 @@ const keepFocus = async () => {
     改变方法：编程式触发foucs事件
   */
   inputRef.value.focus(); // js触发dom的focus事件 模拟用户操作
+}
+
+const formItemContext = inject(formItemContextKey);
+// 在formitem中使用input的验证规则
+const runValidation = (trigger?: string) => {
+  // 来自formitem注入的验证方法
+  // 这个方法是async函数会发出promise错误，如果没有catch错误，那么控制台就会自动打印处错误信息
+  formItemContext?.validate(trigger)
+    .catch((e: FormValidateFailure['fields']) => console.log('error',e));
 }
 
 // 暴露组件
